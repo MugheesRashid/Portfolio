@@ -14,7 +14,7 @@ function Herosection({ isOpen, setIsOpen }) {
   const { mousePositionWithScrollPosition } = useMousePosition();
   const { x, y } = mousePositionWithScrollPosition;
   const [isHover, setIsHover] = useState(false);
-  const [img, setImg] = useState("work1.png");
+  const [img, setImg] = useState("/assets/work1.png");
   const firstText = useRef(null);
   const secondText = useRef(null);
   const slider = useRef(null);
@@ -107,9 +107,9 @@ function Herosection({ isOpen, setIsOpen }) {
   }, [isLoading, professions.length]);
 
   const getImageForX = (x) => {
-    if (x < 550) return "work3.jpg";
-    if (x >= 550 && x < 780) return "work2.jpg";
-    return "work1.png";
+    if (x < 550) return "/assets/work3.jpg";
+    if (x >= 550 && x < 780) return "/assets/work2.jpg";
+    return "/assets/work1.png";
   };
   useEffect(() => {
     const newImg = getImageForX(x);

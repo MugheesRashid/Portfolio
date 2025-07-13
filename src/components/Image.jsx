@@ -32,7 +32,7 @@ function Image() {
         <h2>
           MUGHEES RASHID
         </h2> 
-        <p>
+        <p>c
           Web Developer
         </p>
         <p>

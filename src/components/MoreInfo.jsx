@@ -61,12 +61,12 @@ function MoreInfo() {
   }, []);
 
   const lines = [
-    "I craft digital experiences [img:/work1.png]",
-    "from a mix of inspiration [img:/work2.jpg]",
-    "experimentation [img:/work3.jpg], and",
+    "I craft digital experiences [img:/assets/work1.png]",
+    "from a mix of inspiration [img:/assets/work2.jpg]",
+    "experimentation [img:/assets/work3.jpg], and",
     "continuous learning. By",
-    "[img:/work1.png] a mindset of exploration",
-    "and curiosity. [img:/work2.jpg]",
+    "[img:/assets/work1.png] a mindset of exploration",
+    "and curiosity. [img:/assets/work2.jpg]",
   ];
 
   const getAnimatedLine = (line, index) => {

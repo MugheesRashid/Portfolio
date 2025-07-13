@@ -45,7 +45,7 @@ function Testimonials() {
                 <h1 className='text-[57px] Montserrat font-light leading-tight'>
                     What <span className='font-semibold text-[#71B0BA]'>People Say?</span>
                 </h1>
-                <p className='Poppins'>Words Lorem, ipsum.</p>
+                <p className='Poppins'>Real feedback from real results — delivered with precision.</p>
             </div>
 
             {/* Main Testimonial */}

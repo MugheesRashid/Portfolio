@@ -68,8 +68,8 @@ function Herosection({ isOpen, setIsOpen }) {
             const loaderTimer = setTimeout(() => {
               gsap.to(loaderRef.current, {
                 y: "-150%",
-                duration: 0.5,
-                ease: "power2.out",
+                duration: 1,
+                ease: "cubic-bezier(0.77, 0, 0.175, 1);",
                 onComplete: enableScroll
               });
             }, 2000);

@@ -81,7 +81,7 @@ body {
   }
 
 .second {
-  mask-image: url("./assets/mask.svg");
+  mask-image: url("./mask.svg");
   mask-repeat: no-repeat;
   mask-size: 250px;
   top: 0;

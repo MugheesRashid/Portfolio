@@ -14,31 +14,48 @@ import ResponsiveScreen from "./components/ResponsiveScreen";
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     // Check screen width on mount
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 1024);
     };
-    
+
     checkScreenSize();
-    
+
     // Add event listener for window resize
-    window.addEventListener('resize', checkScreenSize);
-    
+    window.addEventListener("resize", checkScreenSize);
+
     // Cleanup event listener
-    return () => window.removeEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    // Set loaded to true when window finishes loading
+    const handleLoad = () => {
+      setLoaded(true);
+      console.log("Page loaded");
+    };
+
+    if (document.readyState === "complete") {
+      setLoaded(true);
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => window.removeEventListener("load", handleLoad);
   }, []);
 
   useEffect(() => {
     // Only initialize locomotive scroll if not on mobile
-    if (!isMobile) {
+    if (!isMobile && loaded) {
       (async () => {
         const locomotiveScroll = (await import("locomotive-scroll")).default;
         let loco = new locomotiveScroll();
       })();
     }
-  }, [isMobile]);
+  }, [isMobile, loaded]);
 
   // Show responsive screen for mobile devices
   if (isMobile) {
@@ -47,15 +64,22 @@ function App() {
 
   return (
     <div className="main">
-      <Navbar isOpen={isOpen} setIsOpen={setIsOpen} /> 
-       <Herosection isOpen={isOpen} setIsOpen={setIsOpen} /> 
-      <Image /> 
-      <AboutLP />
-      <MoreInfo />
-      <ProjectLP />
-       <WhyChooseMe />
-      <Testimonials />
-      <Footer />  
+      {loaded &&
+        <>
+          <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
+          <Herosection isOpen={isOpen} setIsOpen={setIsOpen} />
+          <Image />
+          <AboutLP />
+          <MoreInfo />
+          <ProjectLP />
+          <WhyChooseMe />
+          <Testimonials />
+          <Footer />
+        </>
+      }{
+        !loaded && 
+        <div className="w-screen h-screen bg-[#111]"></div>
+      }
     </div>
   );
 }

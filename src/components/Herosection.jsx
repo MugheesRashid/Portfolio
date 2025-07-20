@@ -228,7 +228,7 @@ function Herosection({ isOpen, setIsOpen }) {
         >
           <div className="left h-[28px] gap-1 flex item-center justify-between flex-row overflow-hidden">
             <p className="pr-1">Mughees</p>{" "}
-            <p className="flex flex-col justify-start items-center gap-2 text-[var(--color-primary)]">
+            <h9 className="flex flex-col justify-start items-center gap-2 text-[var(--color-primary)]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={navbarProfessionIndex}
@@ -240,7 +240,7 @@ function Herosection({ isOpen, setIsOpen }) {
                   <p>{professions[navbarProfessionIndex]}</p>
                 </motion.div>
               </AnimatePresence>
-            </p>
+            </h9>
           </div>
           <div className="right flex flex-row justify-center items-center gap-5">
             <Rounded staticbg="#112323" backgroundColor="#111">

@@ -31,40 +31,34 @@ function App() {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  useEffect(() => {
-    // Set loaded to true when window finishes loading
-    const handleLoad = () => {
-      setLoaded(true);
-      console.log("Page loaded");
-    };
+  // useEffect(() => {
+  //   // Set loaded to true when window finishes loading
+  //   const handleLoad = () => {
+  //     setLoaded(true);
+  //     console.log("Page loaded");
+  //   };
 
-    if (document.readyState === "complete") {
-      setLoaded(true);
-    } else {
-      window.addEventListener("load", handleLoad);
-    }
+  //   if (document.readyState === "complete") {
+  //     setLoaded(true);
+  //   } else {
+  //     window.addEventListener("load", handleLoad);
+  //   }
 
-    return () => window.removeEventListener("load", handleLoad);
-  }, []);
+  //   return () => window.removeEventListener("load", handleLoad);
+  // }, []);
 
   useEffect(() => {
     // Only initialize locomotive scroll if not on mobile
-    if (!isMobile && loaded) {
+    if (!isMobile) {
       (async () => {
         const locomotiveScroll = (await import("locomotive-scroll")).default;
         let loco = new locomotiveScroll();
       })();
     }
-  }, [isMobile, loaded]);
-
-  // Show responsive screen for mobile devices
-  if (isMobile) {
-    return <ResponsiveScreen />;
-  }
+  }, [isMobile]);
 
   return (
     <div className="main">
-      {loaded &&
         <>
           <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
           <Herosection isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -76,10 +70,6 @@ function App() {
           <Testimonials />
           <Footer />
         </>
-      }{
-        !loaded && 
-        <div className="w-screen h-screen bg-[#111]"></div>
-      }
     </div>
   );
 }
